@@ -1,0 +1,8 @@
+<% @users.each do |user| %>
+  <p>
+    <%= user.email %>
+    <% unless current_user.followeds.include?(user) %>
+      <%= button_to 'Follow', follows_path(followed_id: user.id), method: :post %>
+    <% end %>
+  </p>
+<% end %>
