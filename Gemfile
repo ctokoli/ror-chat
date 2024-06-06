@@ -56,3 +56,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'devise'
+
+gem 'cable_ready'
+
+gem 'stimulus_reflex'
