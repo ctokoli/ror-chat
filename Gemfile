@@ -62,3 +62,7 @@ gem 'devise'
 gem 'cable_ready'
 
 gem 'stimulus_reflex'
+
+gem 'importmap-rails'
+
+gem "redis-session-store", "~> 0.11.5"
