@@ -1,0 +1,17 @@
+<!-- app/views/chats/index.html.erb -->
+<h1>Chat Rooms</h1>
+<% @chat_rooms.each do |chat_room| %>
+  <p>
+    <%= link_to chat_room.name, chat_path(chat_room) %>
+  </p>
+<% end %>
+
+<!-- app/views/chats/show.html.erb -->
+<h1><%= @chat_room.name %></h1>
+<div id="messages">
+  <%= render partial: "messages/message", collection: @messages %>
+</div>
+<%= form_with url: chat_messages_path(@chat_room), data: { reflex: "change->ChatReflex#post_message" } do |form| %>
+  <%= form.text_field :content, id: "message_content" %>
+<% end %>
+
