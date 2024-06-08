@@ -6,3 +6,6 @@
     <% end %>
   </p>
 <% end %>
+
+<p><%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'logout-button' %>
+</p>
