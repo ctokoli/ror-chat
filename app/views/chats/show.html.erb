@@ -1,2 +1,10 @@
-<h1>Chats#show</h1>
-<p>Find me in app/views/chats/show.html.erb</p>
+<!-- app/views/chats/show.html.erb -->
+<h1><%= @chat_room.name  %></h1>
+<div id="messages">
+  <%= render partial: "messages/message", collection: @messages %>
+</div>
+<%= form_with url: chat_messages_path(@chat_room) do |form| %>
+  <%= form.text_area :content, name: "message[content]", placeholder: "Type your message" %>
+  <%= form.submit "Send" %>
+<% end %>
+<!---->
