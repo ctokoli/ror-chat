@@ -37,9 +37,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_195039) do
 
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "chat_room_id", null: false
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -55,9 +57,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_195039) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "follows", "followeds"
-  add_foreign_key "follows", "followers"
+  add_foreign_key "follows", "users", column: "followed_id"
+  add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "memberships", "chat_rooms"
   add_foreign_key "memberships", "users"
   add_foreign_key "messages", "users"
+  add_foreign_key "messages", "users", column: "chat_room_id"
 end
