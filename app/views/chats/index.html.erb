@@ -6,12 +6,4 @@
   </p>
 <% end %>
 
-<!-- app/views/chats/show.html.erb -->
-<h1><%= @chat_room.name %></h1>
-<div id="messages">
-  <%= render partial: "messages/message", collection: @messages %>
-</div>
-<%= form_with url: chat_messages_path(@chat_room), data: { reflex: "change->ChatReflex#post_message" } do |form| %>
-  <%= form.text_field :content, id: "message_content" %>
-<% end %>
 
